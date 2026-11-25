@@ -26,22 +26,22 @@ use `npm.cmd install` e `npm.cmd run dev`.
 
 ## Comandos
 
-| Comando | O que faz |
-| --- | --- |
-| `npm run dev` | Servidor local |
-| `npm run check` | Lint + checagem de tipos + testes (rode antes de cada commit) |
-| `npm test` | Só os testes |
-| `npm run format` | Formata o código (Prettier) |
+| Comando          | O que faz                                                     |
+| ---------------- | ------------------------------------------------------------- |
+| `npm run dev`    | Servidor local                                                |
+| `npm run check`  | Lint + checagem de tipos + testes (rode antes de cada commit) |
+| `npm test`       | Só os testes                                                  |
+| `npm run format` | Formata o código (Prettier)                                   |
 
 ## Onde está cada coisa
 
-| Pasta | O que tem |
-| --- | --- |
-| `src/lib/catalog/` | Serviços, pacotes e preços de referência (2026, a confirmar) |
-| `src/lib/rotation/` | Motor do rodízio de streaming |
-| `src/lib/overlaps/` | Detector de "pago em dobro" e "pacote mais barato" |
-| `src/lib/payoff/` | Calculadora "essa assinatura se paga?" |
-| `src/lib/optimize.ts` | Junta tudo num resultado só |
-| `src/app/` | A tela (por enquanto, uma demonstração interativa do motor) |
+| Pasta                 | O que tem                                                    |
+| --------------------- | ------------------------------------------------------------ |
+| `src/lib/catalog/`    | Serviços, pacotes e preços de referência (2026, a confirmar) |
+| `src/lib/rotation/`   | Motor do rodízio de streaming                                |
+| `src/lib/overlaps/`   | Detector de "pago em dobro" e "pacote mais barato"           |
+| `src/lib/payoff/`     | Calculadora "essa assinatura se paga?"                       |
+| `src/lib/optimize.ts` | Junta tudo num resultado só                                  |
+| `src/app/`            | A tela (por enquanto, uma demonstração interativa do motor)  |
 
 Regras do projeto, decisões e próximos passos: [CLAUDE.md](CLAUDE.md).
