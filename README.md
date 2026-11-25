@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Revezo
 
-## Getting Started
+**Pague só pelas assinaturas que se pagam.**
 
-First, run the development server:
+Web app (PWA) que olha o que a pessoa assina, como ela usa e o que quer ver, e diz o que cancelar,
+o que trocar e o que assinar:
 
-```bash
+- **Pago em dobro:** serviço avulso que um pacote dela já inclui (ex.: Disney+ avulso + Meli+ Total).
+- **Assinaturas que se pagam:** Uber One, Clube iFood, Meli+, Amazon Prime… só quando a conta fecha com o uso dela.
+- **Rodízio de streaming:** um serviço por mês, no mês da estreia, com pausa quando não há nada para ver.
+- **Avisos** (em construção): quando assinar, cancelar, antes de renovar e quando um preço muda.
+
+Público: Brasil. Cartões de crédito e milhas estão fora do escopo.
+
+## Rodar no seu computador
+
+Precisa do [Node.js](https://nodejs.org) 22 ou mais novo.
+
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000. No PowerShell do Windows, se aparecer "running scripts is disabled",
+use `npm.cmd install` e `npm.cmd run dev`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Comandos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Servidor local |
+| `npm run check` | Lint + checagem de tipos + testes (rode antes de cada commit) |
+| `npm test` | Só os testes |
+| `npm run format` | Formata o código (Prettier) |
 
-## Learn More
+## Onde está cada coisa
 
-To learn more about Next.js, take a look at the following resources:
+| Pasta | O que tem |
+| --- | --- |
+| `src/lib/catalog/` | Serviços, pacotes e preços de referência (2026, a confirmar) |
+| `src/lib/rotation/` | Motor do rodízio de streaming |
+| `src/lib/overlaps/` | Detector de "pago em dobro" e "pacote mais barato" |
+| `src/lib/payoff/` | Calculadora "essa assinatura se paga?" |
+| `src/lib/optimize.ts` | Junta tudo num resultado só |
+| `src/app/` | A tela (por enquanto, uma demonstração interativa do motor) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Regras do projeto, decisões e próximos passos: [CLAUDE.md](CLAUDE.md).
