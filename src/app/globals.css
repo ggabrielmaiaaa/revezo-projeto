@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+/* Tema escuro por classe no <html> (o botão de tema troca; sem escolha, segue o sistema). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Identidade do Revezo — a mesma da landing:
+ * fundo levemente azulado, tinta quase preta, roxo-índigo como destaque,
+ * uma cor por serviço (o calendário do rodízio usa essas cores).
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f4f5fa;
+  --surface: #ffffff;
+  --surface-2: #eef0f7;
+  --ink: #15172b;
+  --muted: #5b5f78;
+  --line: #dfe1ec;
+  --accent: #4436d9;
+  --accent-soft: #e6e3ff;
+  --on-accent: #ffffff;
+  --good: #137a4b;
+  --good-soft: #dcf3e7;
+  --warn: #9a5b00;
+  --warn-soft: #fbeed6;
+  --bad: #c0392b;
+  --bad-soft: #fbe4e1;
+
+  --svc-netflix: #d9473b;
+  --svc-max: #2f6fd6;
+  --svc-disney: #12907a;
+  --svc-globoplay: #c27a0e;
+  --svc-prime: #7a4fc4;
+  --svc-apple: #5f6577;
+  --svc-ifood-clube: #d1435b;
+  --svc-uber-one: #2b2f45;
+  --svc-meli: #b8860b;
+  --svc-combo: #8a3f9e;
+}
+
+.dark {
+  --bg: #0f1120;
+  --surface: #181b2e;
+  --surface-2: #20243a;
+  --ink: #eceefa;
+  --muted: #a2a6c2;
+  --line: #2b2f48;
+  --accent: #9b91ff;
+  --accent-soft: #2a2758;
+  --on-accent: #0f1120;
+  --good: #5fd49a;
+  --good-soft: #133527;
+  --warn: #f0b75a;
+  --warn-soft: #3a2e1a;
+  --bad: #ff8a7e;
+  --bad-soft: #3a2224;
+
+  --svc-netflix: #ff8a7e;
+  --svc-max: #7fb0ff;
+  --svc-disney: #5fd4bb;
+  --svc-globoplay: #f0b75a;
+  --svc-prime: #c3a6ff;
+  --svc-apple: #c0c4cf;
+  --svc-ifood-clube: #ff8fa3;
+  --svc-uber-one: #d8dbe8;
+  --svc-meli: #f2cf5b;
+  --svc-combo: #d9a3e8;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-display: var(--font-bricolage), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, Consolas, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Entrada suave de cada passo e de cada cartão de ação. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.45s ease both;
+}
+
+/* Controle deslizante: trilho pintado pelo componente, bolinha na cor de destaque. */
+input[type="range"] {
+  accent-color: var(--accent);
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 4px solid var(--accent);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+  transition: transform 0.15s ease;
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 4px solid var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

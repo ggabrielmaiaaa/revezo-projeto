@@ -62,5 +62,10 @@ TMDB (catálogo, só pelo servidor) · Resend (e-mail) · Web Push (VAPID) · Ve
 - `src/lib/payoff/` — calculadora "se paga?": valor de cada assinatura pelo uso (cashback de corrida,
   entrega, frete, streaming incluído) contra o preço; recomenda assinar, cancelar ou trocar
   (uma por grupo). Regras de valor em `rules.ts`.
+- `src/lib/actions.ts` — transforma o resultado do motor numa lista única de ações (cancelar, revezar,
+  trocar, assinar, opções) com a economia anual; o total da tela vem daqui.
+- `src/components/` — a interface: fluxo em 3 passos (`revezo-app.tsx`), cores por serviço
+  (`service-style.tsx`, variáveis `--svc-*` em `globals.css`), tema claro/escuro (`theme-toggle.tsx`).
+  Identidade visual igual à landing: índigo `--accent`, Bricolage Grotesque + Inter + JetBrains Mono.
 - `src/lib/optimize.ts` — junta tudo: cancela o que é pago em dobro, tira do rodízio o que os pacotes cobrem,
   reveza o resto. Trocas que pioram o plano só são sugeridas, nunca aplicadas.
